@@ -1,0 +1,21 @@
+{
+  "name": "personal-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sever.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.19.0",
+  "dependencies": {
+    "@marko/compiler": "^5.39.44",
+    "@marko/express": "^2.1.0",
+    "express": "^5.2.1",
+    "marko": "^5.37.63",
+    "nodemon": "^3.1.11"
+  }
+}
