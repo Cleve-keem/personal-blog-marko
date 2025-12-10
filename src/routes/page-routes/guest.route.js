@@ -1,8 +1,14 @@
 const { print } = require("../../utils/logger.js");
 const router = require("express").Router();
+const articleTemplate =
+  require("../../views/pages/guest-section/article.marko").default;
 
 router.get("/article/:id", (req, res) => {
-  res.send(`Article Page ${req.params.id}`);
+  const { id } = req.params;
+  res.marko(articleTemplate, {
+    message: `Article`,
+    id,
+  });
 });
 
 module.exports = router;
