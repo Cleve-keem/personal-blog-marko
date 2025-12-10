@@ -4,6 +4,7 @@ const express = require("express");
 const markoMiddleware = require("@marko/express").default;
 const { print } = require("./src/utils/logger.js");
 const guestRoutes = require("./src/routes/page-routes/guest.route.js");
+const adminRoutes = require("./src/routes/page-routes/admin.route.js");
 const homeTemplate =
   require("./src/views/pages/guest-section/home.marko").default;
 
@@ -17,6 +18,7 @@ server.get("/", (req, res) => {
 });
 
 server.use(guestRoutes);
+server.use("/admin", adminRoutes);
 
 // listen for request
 const port = 8080;
