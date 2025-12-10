@@ -3,7 +3,8 @@ require("@marko/compiler/register");
 const express = require("express");
 const markoMiddleware = require("@marko/express").default;
 const { print } = require("./src/utils/logger.js");
-const homeTemplate = require("./src/pages/guest-section/home.marko").default;
+const homeTemplate =
+  require("./src/views/pages/guest-section/home.marko").default;
 
 // create express server
 const server = express();
