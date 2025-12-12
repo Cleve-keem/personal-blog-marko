@@ -1,4 +1,3 @@
-const { print } = require("../../utils/logger.js");
 const router = require("express").Router();
 
 const signupTemplate =

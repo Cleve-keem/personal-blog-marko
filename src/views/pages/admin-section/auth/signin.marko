@@ -9,18 +9,23 @@ import AuthLayout from "../../../layouts/auth-layout.marko";
                     !
                 </span>
             </h1>
-            <form>
-                <input type="text" placeholder="Username" aria-label="username">
+            <form method="post" action="/admin/auth/signin">
+                <input
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                    aria-label="username">
                 <input
                     type="password"
                     placeholder="password"
+                    name="password"
                     aria-label="password">
                 <button>Sign in</button>
             </form>
         </div>
         <p>
             Don't have an account?${" "}
-            <a href="/admin/signup" class="auth-btn signin-btn">
+            <a href="/admin/auth/signup" class="auth-btn signin-btn">
                 Sign up
             </a>
         </p>
