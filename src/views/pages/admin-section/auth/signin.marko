@@ -3,10 +3,23 @@ import AuthLayout from "../../../layouts/auth-layout.marko";
 <AuthLayout title=`Sign In | Blog`>
     <div class="auth signin">
         <div class="container">
-            <h1>Sign in page</h1>
-            <a href="/admin/signup" class="logo">
-                Sign in
-            </a>
+            <h1>
+                Welcome back${" "}
+                <span class="auth-label">
+                    !
+                </span>
+            </h1>
+            <form>
+                <input type="text" placeholder="Username">
+                <input type="password" placeholder="password">
+                <button>Sign in</button>
+            </form>
         </div>
+        <p>
+            Don't have an account?${" "}
+            <a href="/admin/signup" class="auth-btn signin-btn">
+                Sign up
+            </a>
+        </p>
     </div>
 </AuthLayout>

@@ -11,7 +11,7 @@ const homeTemplate =
 // create express server
 const server = express();
 server.use(markoMiddleware());
-server.use(express.static("public"));
+server.use(express.static("src/public"));
 
 server.get("/", (req, res) => {
   res.marko(homeTemplate, { title: "Home" });
