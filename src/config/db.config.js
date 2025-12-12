@@ -1,27 +1,43 @@
-const { print } = require("../utils/logger.js");
 const fs = require("fs");
 const path = require("path");
+const { print } = require("../utils/logger.js");
 
-const database_name = "database";
-const database_path = path.join(process.cwd(), database_name);
-const admin_collection_path = path.join(database_path, "admin");
-const article_collection_path = path.join(database_path, "article");
+const databasePath = path.join(process.cwd(), "database");
+const adminCollectionPath = path.join(databasePath, "admin");
+const articleCollectionPath = path.join(databasePath, "article");
 
-async function createDatabase() {
-  if (!fs.existsSync(database_name)) {
-    fs.mkdirSync(database_path);
-    print("✔ database folder created");
-    fs.mkdirSync(admin_collection_path);
-    print("✔ admin collection folder created");
-    fs.mkdirSync(article_collection_path);
-    print("✔ article folder created");
-  }
+const adminCollectionFile = path.join(adminCollectionPath, "collection.json");
+const articleCollectionFile = path.join(
+  articleCollectionPath,
+  "collection.json"
+);
 
-  if (!existsSync(path.join(admin_collection_path, "collection.json"))) {
-    fs.writeFileSync("collection.json", JSON.stringify());
+function ensureDir(dirPath) {
+  if (!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath, { recursive: true });
+    print(`✔ Created folder: ${dirPath}`);
   }
 }
 
-createDatabase().then();
+function ensureFile(filePath) {
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath, JSON.stringify([], null, 2));
+    print(`✔ Created file: ${filePath}`);
+  }
+}
 
-module.exports = { database_path, admin_collection_path };
+function initDatabase() {
+  ensureDir(databasePath);
+  ensureDir(adminCollectionPath);
+  ensureDir(articleCollectionPath);
+
+  ensureFile(adminCollectionFile);
+  ensureFile(articleCollectionFile);
+}
+
+initDatabase();
+
+module.exports = {
+  adminCollectionFile,
+  articleCollectionFile,
+};
