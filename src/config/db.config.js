@@ -16,7 +16,12 @@ async function createDatabase() {
     fs.mkdirSync(article_collection_path);
     print("✔ article folder created");
   }
+
+  if (!existsSync(path.join(admin_collection_path, "collection.json"))) {
+    fs.writeFileSync("collection.json", JSON.stringify());
+  }
 }
 
-createDatabase();
-// print(fs);
+createDatabase().then();
+
+module.exports = { database_path, admin_collection_path };
