@@ -9,11 +9,11 @@
 #   "password": "StrongPassword123"
 # }
 
-# POST http://localhost:8080/admin/auth/signin
-# Content-Type: application/json
+POST http://localhost:8080/admin/auth/signin
+Content-Type: application/json
 
-# {
-#   "username": "hackhim@22",
-#   "password": "StrongPassword123"
-# } // passed
+{
+  "username": "hackhim@22",
+  "password": "StrongPassword123"
+}
 

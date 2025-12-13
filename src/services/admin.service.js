@@ -19,6 +19,10 @@ class AdminService {
     return admin;
   }
 
+  static findAdminById(id) {
+    return AdminRepository.findById(id);
+  }
+
   static getAdmins() {
     return AdminRepository.getAllAdmins();
   }

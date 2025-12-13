@@ -16,8 +16,7 @@ class AuthController {
         return errorResponse(res, 400, error.details[0].message, error.details);
       }
 
-      const admin = await AdminService.createAdmin(value);
-      successResponse(res, 201, "Admin created successfully!", admin);
+      await AdminService.createAdmin(value);
 
       res.redirect("/admin/dashboard");
     } catch (err) {
@@ -42,12 +41,9 @@ class AuthController {
       if (!admin || (password && password !== admin.password))
         return errorResponse(res, 401, "Invaild username or password");
 
-      // if (password && password !== admin.password) {
-      //   return errorResponse(res, 401, "Invaild username or password");
-      // }
       req.session.adminId = admin.id;
 
-      return successResponse(res, 200, "Login successful!", admin);
+      res.redirect("/admin/dashboard");
     } catch (err) {
       if (err instanceof AdminExistError) {
         return errorResponse(res, 409, err.message);
