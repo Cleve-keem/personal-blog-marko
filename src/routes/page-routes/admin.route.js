@@ -13,4 +13,8 @@ router.get("/signin", (req, res) => {
   res.marko(signinTemplate);
 });
 
+router.get("/dashboard", (req, res) => {
+  res.marko(signinTemplate);
+});
+
 module.exports = router;

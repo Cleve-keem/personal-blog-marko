@@ -1,27 +1,26 @@
 const AdminRepository = require("../repositories/admin.repository.js");
+const { AdminExistError } = require("../utils/expections/admin.expection.js");
 
 class AdminService {
-  static createAdmin(admin) {
-    const adminExist = findByUsername(admin.username);
-
+  static async createAdmin(admin) {
+    const adminExist = await AdminRepository.findByUsername(admin.username);
     if (adminExist) {
-      return {
-        success: false,
-        error: new AdminExistError("Admin already exist!"),
-      };
+      throw new AdminExistError();
     }
 
-    return {
-      success: true,
-      data: AdminRepository.saveAdmin(admin),
-    };
+    return AdminRepository.saveAdmin(admin);
+  }
+
+  static async findAdminByUsername(username) {
+    const admin = await AdminRepository.findByUsername(username);
+    if (!admin) {
+      throw new AdminExistError("Admin not found!");
+    }
+    return admin;
   }
 
   static getAdmins() {
-    return {
-      success: true,
-      data: AdminRepository.getAllAdmins(),
-    };
+    return AdminRepository.getAllAdmins();
   }
 }
 

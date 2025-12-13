@@ -1,5 +1,3 @@
-const fs = require("fs");
-const path = require("path");
 const { print } = require("../utils/logger.js");
 const { adminCollectionFile } = require("../config/db.config.js");
 const BaseRepository = require("./base.repository.js");
@@ -9,19 +7,32 @@ class AdminRepository extends BaseRepository {
     super(adminCollectionFile);
   }
 
-  static getAllAdmins() {
+  getAllAdmins() {
     return this.findAll();
   }
 
-  static saveAdmin(admin) {
+  saveAdmin(admin) {
     const admins = this.findAll();
-    admins.push(admin);
+
+    const newAdmin = {
+      id: Date.now(),
+      ...admin,
+      time_stamp: new Date(),
+    };
+
+    admins.push(newAdmin);
     this.save(admins);
+
+    return newAdmin;
   }
 
-  static findByUsername(username) {
+  findByUsername(username) {
     return this.findAll().find((admin) => admin.username === username);
+  }
+
+  findById(id) {
+    return this.findAll().find((admin) => admin.id === id);
   }
 }
 
-module.exports = AdminRepository;
+module.exports = new AdminRepository();

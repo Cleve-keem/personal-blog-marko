@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 class BaseRepository {
   constructor(filePath) {
     if (!filePath) {
@@ -6,16 +8,16 @@ class BaseRepository {
     this.filePath = filePath;
   }
 
-  static findAll() {
+  findAll() {
     if (!fs.existsSync(this.filePath)) return [];
-    
+
     return JSON.parse(
       fs.readFileSync(this.filePath, "utf-8", { recursive: true })
     );
   }
 
-  static save(model) {
-    fs.writeFileSync(this.filePath, JSON.stringify(model, null, 2));
+  save(data) {
+    fs.writeFileSync(this.filePath, JSON.stringify(data, null, 2));
   }
 }
 

@@ -23,7 +23,7 @@ const adminSignupSchema = Joi.object({
   }),
 });
 
-const adminSininSchema = Joi.object({
+const adminSigninSchema = Joi.object({
   username: Joi.string().min(3).max(50).required().messages({
     "string.empty": "Username is required!",
   }),
@@ -34,5 +34,5 @@ const adminSininSchema = Joi.object({
 
 module.exports = {
   adminSignupSchema,
-  adminSininSchema,
+  adminSigninSchema,
 };

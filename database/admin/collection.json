@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "id": 1765625117848,
+    "firstname": "Hakeem",
+    "lastname": "Bello",
+    "username": "Hackhim",
+    "password": "G-ZC2LTX021R",
+    "time_stamp": "2025-12-13T11:25:17.848Z"
+  },
+  {
+    "id": 1765626241146,
+    "firstname": "Hakeem",
+    "lastname": "Bello",
+    "username": "hackhim@22",
+    "password": "StrongPassword123",
+    "time_stamp": "2025-12-13T11:44:01.146Z"
+  }
+]

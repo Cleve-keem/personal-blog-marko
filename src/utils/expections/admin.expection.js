@@ -1,7 +1,8 @@
 class AdminExistError extends Error {
-  constructor(msg) {
-    super(msg);
-    this.name = "Admin exist error";
+  constructor(message = "Admin already exist!") {
+    super(message);
+    this.name = "AdminExistError";
+    this.statusCode = 409;
   }
 }
 
