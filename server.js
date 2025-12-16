@@ -9,6 +9,7 @@ const authPagesRoutes = require("./src/routes/page-routes/admin/auth.route.js");
 const adminPagesRoutes = require("./src/routes/page-routes/admin/admin.route.js");
 const authRoutes = require("./src/routes/api/auth.route.js");
 const authMiddleware = require("./src/middlewares/authMiddleware.js");
+const guestOnlyMiddleware = require("./src/middlewares/guestOnlyMiddleware.js");
 const indexPage = require("./src/views/pages/guest-section/home.marko").default;
 const { print } = require("./src/utils/logger.js");
 const keys = require("./src/config/keys.js");
@@ -40,8 +41,8 @@ server.get("/", (req, res) => {
 
 server.use(guestPagesRoutes);
 
-server.use("/admin/auth", authPagesRoutes);
-server.use("/admin/auth", authRoutes);
+server.use("/admin/auth", guestOnlyMiddleware, authPagesRoutes);
+server.use("/admin/auth", guestOnlyMiddleware, authRoutes);
 
 // protected routes
 server.use("/admin", authMiddleware, adminPagesRoutes);

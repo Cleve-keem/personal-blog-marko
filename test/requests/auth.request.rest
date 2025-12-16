@@ -9,6 +9,7 @@
 #   "password": "StrongPassword123"
 # }
 
+### Admin Signin
 POST http://localhost:8080/admin/auth/signin
 Content-Type: application/json
 

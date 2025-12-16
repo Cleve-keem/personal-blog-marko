@@ -29,6 +29,13 @@ class AuthController {
   }
 
   static async signInAuthController(req, res) {
+    const adminId = req.session.adminId;
+    const admin = AdminService.findAdminById(adminId);
+
+    if (admin) {
+      return res.redirect("/admin/dashboard");
+    }
+
     const { username, password } = req.body;
 
     try {

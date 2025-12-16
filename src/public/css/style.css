@@ -15,11 +15,19 @@ body {
   --btn-color: #3a3afa;
   --text-secondary: #ffffff;
   --text-primary: #000;
+  --box-shadow: rgba(211, 211, 211, 0.915);
+  --logo-red: #ff0000;
 }
 
 a {
   text-decoration: none;
   color: var(--text-primary);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .auth {
@@ -69,4 +77,45 @@ form button {
 
 .auth-btn {
   display: inline-block;
+}
+
+header {
+  height: 64px;
+  box-shadow: 0 2px 8px var(--box-shadow);
+  margin-bottom: 1rem;
+}
+
+header .header-content {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  background: linear-gradient(to right, var(--btn-color));
+  background-clip: text;
+  color: transparent;
+}
+
+.auth-action-btn {
+  padding: 4px 10px;
+  border-radius: 5px;
+  background-color: var(--btn-color);
+  color: white;
+}
+
+.auth-action-btn.signup {
+  background-color: var(--logo-red);
+  color: var(--text-secondary);
+}
+
+footer {
+  margin-top: auto;
+  padding: 1rem;
+  background-color: var(--btn-color);
+  color: var(--text-secondary);
 }
