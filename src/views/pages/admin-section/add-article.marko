@@ -1,0 +1,28 @@
+import AppLayout from "../../layouts/app-layout.marko";
+
+<AppLayout title=`Add article | Blog`>
+    <div class="article-section">
+        <div class="container">
+            <h4>New Article</h4>
+            <form method="post" action="/admin/article/new">
+                <input
+                    type="text"
+                    placeholder="Article Title"
+                    name="title"
+                    aria-label="article-title">
+                <input
+                    type="date"
+                    placeholder="Publish Date"
+                    name="date"
+                    aria-label="publish-date">
+                <textarea
+                    name="content"
+                    rows="8"
+                    cols="40"
+                    placeholder="Content"
+                    aria-label="article-content"/>
+                <button>Publish article</button>
+            </form>
+        </div>
+    </div>
+</AppLayout>

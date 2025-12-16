@@ -10,6 +10,7 @@
 # }
 
 ### Admin Signin
+
 POST http://localhost:8080/admin/auth/signin
 Content-Type: application/json
 
@@ -18,3 +19,10 @@ Content-Type: application/json
   "password": "StrongPassword123"
 }
 
+# GET http://localhost:8080/admin/auth/signin
+# Content-Type: application/json
+
+# {
+#   "username": "hackhim@22",
+#   "password": "StrongPassword123"
+# }

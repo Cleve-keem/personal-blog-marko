@@ -29,28 +29,35 @@ class AuthController {
   }
 
   static async signInAuthController(req, res) {
-    const adminId = req.session.adminId;
-    const admin = AdminService.findAdminById(adminId);
-
-    if (admin) {
-      return res.redirect("/admin/dashboard");
-    }
-
     const { username, password } = req.body;
+    const adminId = req.session.adminId;
 
     try {
+      const adminExist = await AdminService.findAdminById(adminId);
+
+      if (adminExist) {
+        return res.redirect("/admin/dashboard");
+      }
+
       const { error, value } = adminSigninSchema.validate(req.body);
       if (error) {
         return errorResponse(res, 400, error.details[0].message, error.details);
       }
 
       const admin = await AdminService.findAdminByUsername(username);
-      if (!admin || (password && password !== admin.password))
-        return errorResponse(res, 401, "Invaild username or password");
+      if (!admin || (password && password !== admin.password)) {
+        return errorResponse(res, 401, "Invalid username or password");
+      }
 
       req.session.adminId = admin.id;
 
-      res.redirect("/admin/dashboard");
+      req.session.save((err) => {
+        if (err) {
+          print("Session save error:", err);
+          return errorResponse(res, 500, "Login failed");
+        }
+        res.redirect("/admin/dashboard"); 
+      });
     } catch (err) {
       if (err instanceof AdminExistError) {
         return errorResponse(res, 409, err.message);

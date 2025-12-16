@@ -8,8 +8,10 @@ const guestPagesRoutes = require("./src/routes/page-routes/guest.route.js");
 const authPagesRoutes = require("./src/routes/page-routes/admin/auth.route.js");
 const adminPagesRoutes = require("./src/routes/page-routes/admin/admin.route.js");
 const authRoutes = require("./src/routes/api/auth.route.js");
+const articleRoutes = require("./src/routes/api/articles/article.route.js");
 const authMiddleware = require("./src/middlewares/authMiddleware.js");
 const guestOnlyMiddleware = require("./src/middlewares/guestOnlyMiddleware.js");
+const exposeAuthState = require("./src/middlewares/exposeAuthState.js");
 const indexPage = require("./src/views/pages/guest-section/home.marko").default;
 const { print } = require("./src/utils/logger.js");
 const keys = require("./src/config/keys.js");
@@ -26,14 +28,16 @@ server.use(
     secret: keys.session.secret,
     resave: false,
     saveUninitialized: false,
-    cookies: {
+    cookie: {
       httpOnly: true,
-      secure: true,
+      secure: false,
       sameSite: "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     },
   })
 );
+
+server.use(exposeAuthState);
 
 server.get("/", (req, res) => {
   res.marko(indexPage, { title: "Home" });
@@ -46,6 +50,7 @@ server.use("/admin/auth", guestOnlyMiddleware, authRoutes);
 
 // protected routes
 server.use("/admin", authMiddleware, adminPagesRoutes);
+server.use("/admin", articleRoutes);
 
 // listen for request
 const port = 8080;

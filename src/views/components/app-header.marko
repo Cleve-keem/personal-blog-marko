@@ -3,8 +3,19 @@
         <a href="/" class="logo">
             Blog
         </a>
-        <a href="/admin/auth/signin" class="auth-action-btn signin">
-            Sign in
-        </a>
+
+        <if(out.global.auth && out.global.auth.isAuthenticated)>
+            <form method="post" action="/admin/auth/logout">
+                <button class="auth-action-btn logout">
+                    Logout
+                </button>
+            </form>
+        </if>
+
+        <else>
+            <a href="/admin/auth/signin" class="auth-action-btn signin">
+                Sign in
+            </a>
+        </else>
     </div>
 </header>

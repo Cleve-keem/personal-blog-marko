@@ -1,10 +1,15 @@
 const router = require("express").Router();
 
-const dashboardPageTemplate =
-  require("../../../views/pages/admin-section/dashboard.marko").default;
-
 router.get("/dashboard", (req, res) => {
-  res.marko(dashboardPageTemplate);
+  res.marko(
+    require("../../../views/pages/admin-section/dashboard.marko").default
+  );
+});
+
+router.get("/article/new", (req, res) => {
+  res.marko(
+    require("../../../views/pages/admin-section/add-article.marko").default
+  );
 });
 
 module.exports = router;
