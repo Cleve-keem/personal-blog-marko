@@ -1,9 +1,16 @@
 const router = require("express").Router();
+const ArticleService = require("../../../services/article.service.js");
+const dashboardPage =
+  require("../../../views/pages/admin-section/dashboard.marko").default;
 
-router.get("/dashboard", (req, res) => {
-  res.marko(
-    require("../../../views/pages/admin-section/dashboard.marko").default
-  );
+router.get("/dashboard", async (req, res) => {
+  try {
+    const articles = await ArticleService.fetchArticles();
+    res.marko(dashboardPage, { articles });
+  } catch (err) {
+    console.error("Dashboard error:", err);
+    res.status(500).send("Error loading dashboard");
+  }
 });
 
 router.get("/article/new", (req, res) => {

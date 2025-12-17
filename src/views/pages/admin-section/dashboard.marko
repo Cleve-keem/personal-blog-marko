@@ -21,5 +21,19 @@ import AppLayout from "../../layouts/app-layout.marko";
                 </svg>
             </a>
         </div>
+        // $ const articles = input.articles;
+        <ul class="article-list">
+            <for|article, index| of=input.articles>
+                <li key=index class="article">
+                    <div class="article-info">
+                        <strong>${article.title}</strong>
+                        <span>${article.date}</span>
+                    </div>
+                    <span class="article-author">
+                        ${article.publishedBy}
+                    </span>
+                </li>
+            </for>
+        </ul>
     </div>
 </AppLayout>
