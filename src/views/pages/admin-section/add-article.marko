@@ -9,18 +9,21 @@ import AppLayout from "../../layouts/app-layout.marko";
                     type="text"
                     placeholder="Article Title"
                     name="title"
-                    aria-label="article-title">
+                    aria-label="article-title"
+                    required>
                 <input
                     type="date"
                     placeholder="Publish Date"
                     name="date"
-                    aria-label="publish-date">
+                    aria-label="publish-date"
+                    required>
                 <textarea
                     name="content"
                     rows="8"
                     cols="40"
                     placeholder="Content"
-                    aria-label="article-content"/>
+                    aria-label="article-content"
+                    required/>
                 <button>Publish article</button>
             </form>
         </div>

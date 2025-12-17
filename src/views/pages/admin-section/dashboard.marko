@@ -19,19 +19,22 @@ import AppLayout from "../../layouts/app-layout.marko";
                     <path d="M5 12h14"/>
                     <path d="M12 5v14"/>
                 </svg>
+                <span>Add</span>
             </a>
         </div>
         // $ const articles = input.articles;
         <ul class="article-list">
             <for|article, index| of=input.articles>
-                <li key=index class="article">
-                    <div class="article-info">
-                        <strong>${article.title}</strong>
-                        <span>${article.date}</span>
-                    </div>
-                    <span class="article-author">
-                        ${article.publishedBy}
+                <li key=index class="dashboard-article article">
+                    <span class="article-title">
+                        ${article.title}
                     </span>
+                    <a href="/admin/article/edit">
+                        edit
+                    </a>
+                    <a href="/admin/article/update">
+                        delete
+                    </a>
                 </li>
             </for>
         </ul>
