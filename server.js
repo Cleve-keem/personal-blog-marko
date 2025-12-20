@@ -12,7 +12,6 @@ const articleRoutes = require("./src/routes/api/articles/article.route.js");
 const authMiddleware = require("./src/middlewares/authMiddleware.js");
 const guestOnlyMiddleware = require("./src/middlewares/guestOnlyMiddleware.js");
 const exposeAuthState = require("./src/middlewares/exposeAuthState.js");
-const indexPage = require("./src/views/pages/guest-section/home.marko").default;
 const { print } = require("./src/utils/logger.js");
 const keys = require("./src/config/keys.js");
 
@@ -38,11 +37,6 @@ server.use(
 );
 
 server.use(exposeAuthState);
-
-server.get("/", (req, res) => {
-  res.marko(indexPage, { title: "Home" });
-});
-
 server.use(guestPagesRoutes);
 
 server.use("/admin/auth", guestOnlyMiddleware, authPagesRoutes);

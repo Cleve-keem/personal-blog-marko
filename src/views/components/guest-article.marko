@@ -1,0 +1,13 @@
+$ const { article, index } = input;
+
+<li key=index class="article guest-article">
+    <a href=`/article/${index + 1}`>
+        <div class="article-info">
+            <strong>${article.title}</strong>
+            <span>${article.date}</span>
+        </div>
+        <span class="article-author">
+            ${article.publishedBy}
+        </span>
+    </a>
+</li>

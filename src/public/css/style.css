@@ -181,11 +181,19 @@ ul {
 .article-list li a {
   display: block;
   color: var(--border-color);
-  /* padding: 0.5rem 1rem; */
+}
+
+.article-list li.guest-article a {
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
 }
 
 .article-list li a:last-child {
   margin-left: 10px;
+}
+
+.article-list li.guest-article a {
+  margin-left: 0;
 }
 
 .article-list li div {

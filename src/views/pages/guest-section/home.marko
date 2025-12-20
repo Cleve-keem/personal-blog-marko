@@ -2,6 +2,9 @@
 import AppLayout from "../../layouts/app-layout.marko";
 
 <AppLayout title="Home Page">
-    <h1>Welcome to my blog</h1>
-    <p>This is the home page.</p>
+    <ul class="article-list">
+        <for|article, index| of=input.articles>
+            <guest-article article=article index=index/>
+        </for>
+    </ul>
 </AppLayout>

@@ -6,10 +6,10 @@ const dashboardPage =
 router.get("/dashboard", async (req, res) => {
   try {
     const articles = await ArticleService.fetchArticles();
-    res.marko(dashboardPage, { articles });
+    return res.marko(dashboardPage, { articles });
   } catch (err) {
     console.error("Dashboard error:", err);
-    res.status(500).send("Error loading dashboard");
+    return res.status(500).send("Error loading dashboard");
   }
 });
 
