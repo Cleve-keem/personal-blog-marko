@@ -33,13 +33,12 @@ import AppLayout from "../../layouts/app-layout.marko";
                         edit
                     </a>
                     <form
-                        method="delete"
-                        action=`/admin/article/${index + 1}`>
+                        method="post"
+                        action=`/admin/article/delete/${index + 1}`>
                         <button type="submit" class="delete-btn">
                             delete
                         </button>
                     </form>
-                    ${" "}
                 </li>
             </for>
         </ul>

@@ -1,5 +1,5 @@
 const ArticleService = require("../services/article.service.js");
-const AdminService = require("../services/admin.service.js");
+// const AdminService = require("../services/admin.service.js");
 const { successResponse, errorResponse } = require("../utils/response.js");
 
 class ArticleController {
@@ -24,8 +24,8 @@ class ArticleController {
       await ArticleService.deleteArticle(id);
       return res.redirect("/admin/dashboard");
     } catch (err) {
-      console.error("Error from delete article", error.message);
-      return errorResponse(res, 500, "Internal server error", error.message);
+      console.error("Error from delete article", err.message);
+      return errorResponse(res, 500, "Internal server error", err.message);
     }
   }
 }

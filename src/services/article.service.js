@@ -2,9 +2,7 @@ const ArticleRepository = require("../repositories/article.repository.js");
 
 class ArticleService {
   static async createArticle(article, admin) {
-    const articleExist = await ArticleRepository.findArticleByTitle(
-      article.title
-    );
+    const articleExist = await ArticleRepository.findTitle(article.title);
 
     if (articleExist) {
       throw new Error("Article title already exist!");
