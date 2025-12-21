@@ -14,7 +14,11 @@ class ArticleService {
   }
 
   static async fetchArticles() {
-    return ArticleRepository.getAllArticles();
+    return await ArticleRepository.getAllArticles();
+  }
+
+  static async findArticleById(id) {
+    return await ArticleRepository.findId(id);
   }
 }
 

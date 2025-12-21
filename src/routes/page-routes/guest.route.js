@@ -1,7 +1,6 @@
-const { print } = require("../../utils/logger.js");
 const router = require("express").Router();
 const ArticleService = require("../../services/article.service.js");
-const articleTemplate =
+const articlePage =
   require("../../views/pages/guest-section/article.marko").default;
 const homePage = require("../../views/pages/guest-section/home.marko").default;
 
@@ -15,12 +14,19 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/article/:id", (req, res) => {
+router.get("/article/:id", async (req, res) => {
   const { id } = req.params;
-  res.marko(articleTemplate, {
-    message: `Article`,
-    id,
-  });
+  try {
+    const article = await ArticleService.findArticleById(id);
+    return res.marko(articlePage, {
+      message: `Article`,
+      id,
+      article,
+    });
+  } catch (err) {
+    console.error("Error from guest dynamic article route:", err.message);
+    return res.status(500).send("Error loading article page");
+  }
 });
 
 module.exports = router;

@@ -2,8 +2,18 @@ import AppLayout from "../../layouts/app-layout.marko";
 
 <AppLayout title=`Article ${input.id} Page`>
     $ const { article } = input;
+    <div class="article-page">
 
-    <h1>${article.title}</h1>
-    <span>${article.date}</span>
-    <p>${article.content}</p>
+        <back-link label="← Back"/>
+
+        <h1 class="article-title">
+            ${article.title}
+        </h1>
+        <span class="article-date">
+            ${article.date}
+        </span>
+        <p class="article-content">
+            ${article.content}
+        </p>
+    </div>
 </AppLayout>

@@ -24,8 +24,12 @@ class ArticleRepository extends BaseRepository {
     return newArticle;
   }
 
-  findArticleByTitle(title) {
+  findTitle(title) {
     return this.findAll().find((article) => article.title === title);
+  }
+
+  findId(id) {
+    return this.findAll().find((article) => article.id === Number(id));
   }
 
   getAllArticles() {
