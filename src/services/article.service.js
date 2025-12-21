@@ -19,8 +19,22 @@ class ArticleService {
     return await ArticleRepository.findId(id);
   }
 
+  static async updateArticle(id, update) {
+    const article = await ArticleRepository.findId(id);
+
+    if (!article) {
+      throw new Error("Article not found!");
+    }
+
+    article.title = update.title;
+    article.date = update.date;
+    article.content = update.content;
+
+    return article;
+  }
+
   static async deleteArticle(id) {
-    await ArticleRepository.findAndRemoveOne(id);
+    ArticleRepository.findAndRemoveOne(id);
   }
 }
 
