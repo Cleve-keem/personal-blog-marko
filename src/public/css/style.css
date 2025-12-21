@@ -245,3 +245,10 @@ footer {
   margin-bottom: 1rem;
   display: block;
 }
+
+.delete-btn {
+  font: inherit;
+  background-color: inherit;
+  color: var(--border-color);
+  margin-left: 10px;
+}

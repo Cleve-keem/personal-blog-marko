@@ -20,6 +20,10 @@ class ArticleService {
   static async findArticleById(id) {
     return await ArticleRepository.findId(id);
   }
+
+  static async deleteArticle(id) {
+    await ArticleRepository.findAndRemoveOne(id);
+  }
 }
 
 module.exports = ArticleService;

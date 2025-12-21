@@ -35,6 +35,10 @@ class ArticleRepository extends BaseRepository {
   getAllArticles() {
     return this.findAll();
   }
+
+  findAndRemoveOne(id) {
+    this.save(this.findAll().filter((article) => article.id != id));
+  }
 }
 
 module.exports = new ArticleRepository();

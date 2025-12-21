@@ -17,6 +17,17 @@ class ArticleController {
       return errorResponse(res, 500, "Internal server error", error.message);
     }
   }
+
+  static async removeArticle(req, res) {
+    const { id } = req.params;
+    try {
+      await ArticleService.deleteArticle(id);
+      return res.redirect("/admin/dashboard");
+    } catch (err) {
+      console.error("Error from delete article", error.message);
+      return errorResponse(res, 500, "Internal server error", error.message);
+    }
+  }
 }
 
 module.exports = ArticleController;

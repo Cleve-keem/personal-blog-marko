@@ -29,12 +29,17 @@ import AppLayout from "../../layouts/app-layout.marko";
                     <span class="article-title">
                         ${article.title}
                     </span>
-                    <a href="/admin/article/edit">
+                    <a href=`/admin/article/edit/${index + 1}`>
                         edit
                     </a>
-                    <a href="/admin/article/update">
-                        delete
-                    </a>
+                    <form
+                        method="delete"
+                        action=`/admin/article/${index + 1}`>
+                        <button type="submit" class="delete-btn">
+                            delete
+                        </button>
+                    </form>
+                    ${" "}
                 </li>
             </for>
         </ul>
