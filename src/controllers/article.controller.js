@@ -18,6 +18,22 @@ class ArticleController {
     }
   }
 
+  static async updateArticle(req, res) {
+    const { id } = req.params;
+
+    try {
+      const article = ArticleService.updateArticle(id, req.body);
+
+      if (!article) {
+        return errorResponse(res, 404, "Article not found!");
+      }
+      return res.redirect("/admin/dashboard");
+    } catch (err) {
+      console.error("Error from updateArticle controller:", err.message);
+      return errorResponse(res, 500, "Failed to update article");
+    }
+  }
+
   static async removeArticle(req, res) {
     const { id } = req.params;
     try {
