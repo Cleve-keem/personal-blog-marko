@@ -6,7 +6,8 @@
 
 html,
 body {
-  font-family: cursive;
+  font-family: system-ui, cursive, sans-serif;
+  font-size: 20px;
 }
 
 :root {
